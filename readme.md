@@ -1,1 +1,2 @@
 Simplest project for hosting static gh-pages (SPA further).
+`npm run deploy` is deployed dist folder to remote (no need to commit) on GitHub & you can see [demo site](https://vit-1.github.io/dist-gh-pages/)
