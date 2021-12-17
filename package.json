@@ -1,6 +1,6 @@
 {
     "name": "dist-gh-pages",
-    "version": "0.0.1",
+    "version": "0.0.2",
 	"description": "Simplest project for hosting static gh-pages (SPA further).",
 	"keywords": [
 		"gh-pages",
@@ -12,6 +12,8 @@
         "url": "git://github.com/viT-1/dist-gh-pages.git"
     },
 	"scripts": {
+		"build": "mkdir dist && cp ./src/index.html dist/",
+		"predeploy": "npm run build",
 		"deploy": "push-dir --dir=dist --branch=gh-pages"
 	},
 	"devDependencies": {
