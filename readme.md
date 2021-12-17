@@ -1,0 +1,1 @@
+Simplest project for hosting static gh-pages (SPA further).
