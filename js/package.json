@@ -16,7 +16,7 @@
 		"prebuild": "npm run lint",
 		"mkdist": "rm -rf dist && mkdir dist",
 		"precopyfiles": "npm run mkdist",
-		"copyfiles": "cp -r ./src/** ./dist && cp ./package.json ./dist",
+		"copyfiles": "cp -r ./src/** ./dist && cp ./package.json ./dist/js",
 		"replacestr": "replace-in-file ./dist/index.html --configFile=./replace-in-file.config.js",
 		"build": "npm run copyfiles && npm run replacestr",
 		"predeploy": "npm run build",
