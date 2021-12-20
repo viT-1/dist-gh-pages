@@ -1,0 +1,11 @@
+{
+    "root": true,
+    "extends": [
+        "eslint:recommended",
+        "./eslint.rules.json"
+    ],
+	"env": {
+        "commonjs": true,
+		"es6": true
+	}
+}

@@ -1,7 +1,7 @@
 {
     "name": "dist-gh-pages",
-    "version": "0.0.3",
-	"description": "Simplest project for hosting static gh-pages (SPA further).",
+    "version": "0.1.0",
+	"description": "Simple project for hosting static gh-pages (SPA further).",
 	"keywords": [
 		"gh-pages",
 		"free hosting",
@@ -12,11 +12,18 @@
         "url": "git://github.com/viT-1/dist-gh-pages.git"
     },
 	"scripts": {
-		"build": "rm -rf dist && mkdir dist && cp ./src/index.html dist/",
+		"lint": "eslint **/*.js",
+		"prebuild": "npm run lint",
+		"mkdist": "rm -rf dist && mkdir dist",
+		"copyfiles": "cp ./src/index.html dist/",
+		"replacestr": "replace-in-file ./dist/index.html --configFile=./replace-in-file.config.js",
+		"build": "npm run mkdist && npm run copyfiles && npm run replacestr",
 		"predeploy": "npm run build",
 		"deploy": "push-dir --dir=dist --branch=gh-pages"
 	},
 	"devDependencies": {
-		"push-dir": "0.4.1"
+		"eslint": "8.5.0",
+		"push-dir": "0.4.1",
+		"replace-in-file": "6.3.2"
 	}
 }
