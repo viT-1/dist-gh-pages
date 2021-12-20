@@ -1,6 +1,6 @@
 {
     "name": "dist-gh-pages",
-    "version": "0.1.2",
+    "version": "0.2.0",
 	"description": "Simple project for hosting static gh-pages (SPA further).",
 	"keywords": [
 		"gh-pages",
@@ -16,7 +16,7 @@
 		"prebuild": "npm run lint",
 		"mkdist": "rm -rf dist && mkdir dist",
 		"precopyfiles": "npm run mkdist",
-		"copyfiles": "cp -r ./src/** ./dist && cp ./package.json ./dist/js",
+		"copyfiles": "cp -r ./src/** ./dist && cp ./package.json ./dist/js/ackage.json",
 		"replacestr": "replace-in-file ./dist/index.html --configFile=./replace-in-file.config.js",
 		"build": "npm run copyfiles && npm run replacestr",
 		"predeploy": "npm run build",
