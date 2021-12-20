@@ -1,0 +1,30 @@
+{
+    "name": "dist-gh-pages",
+    "version": "0.1.2",
+	"description": "Simple project for hosting static gh-pages (SPA further).",
+	"keywords": [
+		"gh-pages",
+		"free hosting",
+		"static site"
+	],
+	"repository": {
+        "type": "git",
+        "url": "git://github.com/viT-1/dist-gh-pages.git"
+    },
+	"scripts": {
+		"lint": "eslint src/**/*.js",
+		"prebuild": "npm run lint",
+		"mkdist": "rm -rf dist && mkdir dist",
+		"precopyfiles": "npm run mkdist",
+		"copyfiles": "cp -r ./src/** ./dist && cp ./package.json ./dist",
+		"replacestr": "replace-in-file ./dist/index.html --configFile=./replace-in-file.config.js",
+		"build": "npm run copyfiles && npm run replacestr",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d dist"
+	},
+	"devDependencies": {
+		"eslint": "8.5.0",
+		"gh-pages": "3.2.2",
+		"replace-in-file": "6.3.2"
+	}
+}
