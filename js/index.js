@@ -1,3 +1,3 @@
-import pack from './package.json';
+import { devDependencies } from './package';
 
-console.log('imported devDependencies', pack.devDependencies);
+console.log('imported devDependencies', devDependencies);
