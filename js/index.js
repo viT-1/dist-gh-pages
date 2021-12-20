@@ -1,3 +1,3 @@
-import { devDependencies } from './ackage.json';
+import pack from './ackage.json';
 
-console.log('imported devDependencies', devDependencies);
+console.log('imported devDependencies', pack.devDependencies);
