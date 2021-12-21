@@ -1,3 +1,3 @@
-import { devDependencies } from './package';
+import { devDependencies } from './package.js';
 
 console.log('imported devDependencies', devDependencies);
