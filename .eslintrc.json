@@ -1,11 +1,27 @@
 {
-    "root": true,
+	"root": true,
     "extends": [
-        "eslint:recommended",
-        "./eslint.rules.json"
+		"eslint:recommended",
+		"./eslint.rules.json"
     ],
 	"env": {
-        "commonjs": true,
 		"es6": true
-	}
+	},
+    "overrides": [
+		{
+			"files": ["./*.js"],
+			"env": {
+				"commonjs": true
+			}
+		},
+		{
+			"files": ["./src/**/*.js", "./dist/**/*.js"],
+			"env": {
+				"browser": true
+			},
+			"parserOptions": {
+				"sourceType": "module"
+			}
+		}
+	]
 }
