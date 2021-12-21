@@ -6,13 +6,14 @@ const ghPagesModule = { name: 'gh-pages' };
 ghPagesModule.ver = devDependencies[ghPagesModule.name];
 
 const from = new Array(
-	'@@ghPagesModule',
-	/^(.* from )(')(?!.*(\.js))(.*)(')/gm // import esm without extensions
+	'@@ghPagesModule', // for index.html template
+	/\s?\/{2}(.*)/gm, // remove line comments
+	/^(.* from )(')(?!.*(\.js))(.*)(')/gm // import esm without extensions (but not json)
 );
 
 const options = {
 	from,
-	to: [`${ghPagesModule.name}@${ghPagesModule.ver}`, '$1$2$4.js$2'],
+	to: [`${ghPagesModule.name}@${ghPagesModule.ver}`, '', '$1$2$4.js$2'],
 };
 
 module.exports = options;
