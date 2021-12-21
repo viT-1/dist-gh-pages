@@ -1,0 +1,7 @@
+{
+	"rules": {
+		"attr-quote-style": false,
+		"indent-style": false,
+		"title-max-len": false
+	}
+}
