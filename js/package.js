@@ -1,3 +1,3 @@
 export const devDependencies = {
-	devDependencies: 'hello devDependencies',
+	'replace-in-file': 'v???',
 };
