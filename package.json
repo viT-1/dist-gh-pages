@@ -1,6 +1,6 @@
 {
     "name": "dist-gh-pages",
-    "version": "0.3.0",
+    "version": "0.3.1",
 	"description": "Simple project for hosting static gh-pages (SPA further).",
 	"keywords": [
 		"gh-pages",
@@ -28,8 +28,6 @@
 		"replace-in-file": "6.3.2"
 	},
 	"devDependencies": {
-		"@linthtml/linthtml": "0.8.4",
-		"@linthtml/linthtml-config-recommended": "0.1.0",
 		"eslint": "8.5.0",
 		"eslint-plugin-import": "2.25.3",
 		"eslint-import-resolver-alias": "1.1.2"
