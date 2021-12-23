@@ -2,10 +2,18 @@
 <head>
 	<title>Simple page</title>
 	<link rel="icon" href="data:," />
+	<script async src="https:
 </head>
 <body>
 	<p>This is default page built from src, then deployed
 		from dist folder by npm package gh-pages@undefined.</p>
-	<script type="importmap" src="importmap.esm.json"></script>
+	<script type="importmap">
+		{
+			"imports": {
+				"#common/Greeter": "/common/Greeter/index.js",
+				"#common/GreeterUse": "/common/GreeterUse/index.js"
+			}
+		}
+	</script>
 	<script src="main.js" type="module"></script>
 </body>
