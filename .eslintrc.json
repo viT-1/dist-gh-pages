@@ -2,8 +2,19 @@
 	"root": true,
     "extends": [
 		"eslint:recommended",
+		"plugin:import/recommended",
 		"./eslint.rules.json"
     ],
+	"plugins": ["import"],
+	"settings": {
+		"import/resolver": {
+			"alias": {
+				"map": [
+					["#common", "./src/common"]
+				]
+			}
+		}
+	},
 	"env": {
 		"es6": true
 	},

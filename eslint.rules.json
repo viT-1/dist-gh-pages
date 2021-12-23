@@ -7,6 +7,8 @@
 		"no-var": "error",
 		"quotes": ["error", "single"],
 		"semi": ["error", "always"],
-		"spaced-comment": ["error", "always"]
+		"spaced-comment": ["error", "always"],
+		"import/no-default-export": "error",
+		"import/ignore": [".*\\.js"]
 	}
 }

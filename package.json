@@ -1,33 +1,37 @@
 {
     "name": "dist-gh-pages",
-    "version": "0.2.2",
+    "version": "0.3.0",
 	"description": "Simple project for hosting static gh-pages (SPA further).",
 	"keywords": [
 		"gh-pages",
 		"free hosting",
-		"static site"
+		"static site",
+		"alias"
 	],
 	"repository": {
         "type": "git",
         "url": "git://github.com/viT-1/dist-gh-pages.git"
     },
 	"scripts": {
-		"lint": "eslint src/**/*.js && linthtml src/**/*.htmXXX",
+		"greetnode": "node --experimental-modules --es-module-specifier-resolution=node ./src/main",
+		"lint": "eslint src/**/*.js",
 		"mkdist": "rm -rf dist && mkdir dist",
 		"precopyfiles": "npm run mkdist",
 		"copyfiles": "cp -r ./src/** ./dist",
-		"replacestr": "replace-in-file ./dist/index.html,./dist/**/*.js --configFile=./replace-in-file.config.js",
+		"replacestr": "node ./replace-in-file.js",
 		"build": "npm run copyfiles && npm run replacestr",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d dist"
 	},
 	"dependencies": {
-		"gh-pages": "3.2.2",
+		"gh-pages": "3.2.3",
 		"replace-in-file": "6.3.2"
 	},
 	"devDependencies": {
 		"@linthtml/linthtml": "0.8.4",
 		"@linthtml/linthtml-config-recommended": "0.1.0",
-		"eslint": "8.5.0"
+		"eslint": "8.5.0",
+		"eslint-plugin-import": "2.25.3",
+		"eslint-import-resolver-alias": "1.1.2"
 	}
 }
