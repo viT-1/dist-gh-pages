@@ -1,4 +1,4 @@
-import { Greeter } from 'common/Greeter/index.js';
+import { Greeter } from '/dist-gh-pages/common/Greeter/index.js';
 
 function GreeterUse() {
 }
