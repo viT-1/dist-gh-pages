@@ -1,6 +1,0 @@
-{
-	"imports": {
-		"#common/Greeter": "common/Greeter/index.js",
-		"#common/GreeterUse": "common/GreeterUse/index.js"
-	}
-}
