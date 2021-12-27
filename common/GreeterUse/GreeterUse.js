@@ -4,7 +4,7 @@ function GreeterUse() {
 }
 
 GreeterUse.say = function() {
-	const gr = new Greeter('world');
+	const gr = new Greeter('Dude');
 	return gr.greet();
 };
 
