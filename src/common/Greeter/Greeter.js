@@ -1,11 +1,11 @@
-import { greetText } from './Greeter-conf';
+import { defaultTarget, greetText } from './Greeter-conf';
 
-function Greeter(message) {
-	this.greeting = message | greetText;
+function Greeter(target) {
+	this.greetTarget = target || defaultTarget;
 }
 
 Greeter.prototype.greet = function () {
-	return `${greetText}, ${this.greeting}`;
+	return `${greetText}, ${this.greetTarget}`;
 };
 
 export { Greeter };
