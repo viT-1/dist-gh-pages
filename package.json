@@ -1,6 +1,6 @@
 {
     "name": "dist-gh-pages",
-    "version": "0.3.2",
+    "version": "0.3.3",
 	"description": "Simple project for hosting static gh-pages (SPA further).",
 	"keywords": [
 		"gh-pages",
@@ -13,17 +13,17 @@
         "url": "git://github.com/viT-1/dist-gh-pages.git"
     },
 	"scripts": {
-		"greetnode": "node --experimental-modules --es-module-specifier-resolution=node ./src/main",
 		"lint": "eslint **/*.js",
 		"mkdist": "rm -rf dist && mkdir dist",
 		"precopyfiles": "npm run mkdist",
 		"copyfiles": "cp -r ./src/** ./dist",
-		"replacestr": "node ./replace-in-file.js",
+		"replacestr": "node -r esm ./replace-in-file.js",
 		"build": "npm run copyfiles && npm run replacestr",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d dist"
 	},
 	"dependencies": {
+		"esm": "3.2.25",
 		"gh-pages": "3.2.3",
 		"replace-in-file": "6.3.2"
 	},

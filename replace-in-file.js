@@ -1,6 +1,7 @@
-const replace = require('replace-in-file');
-const eslintConfig = require('./.eslintrc.json');
-const pjson = require('./package.json');
+import replace from 'replace-in-file';
+import eslintConfig from './.eslintrc.json';
+import pjson from './package.json';
+
 const { devDependencies, name: ghPagesFolder } = pjson;
 
 const ghPagesModule = { name: 'gh-pages' };
