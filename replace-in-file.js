@@ -1,3 +1,4 @@
+import arg from 'arg';
 import replace from 'replace-in-file';
 import eslintConfig from './.eslintrc.json';
 import pjson from './package.json';
@@ -24,16 +25,29 @@ let jsStrFrom = new Array(
 
 let jsStrTo = ['', '$1$2$4.js$2', '$1$2$3$4$5/index.js$2'];
 
-// use eslint configuration for aliases
-const eslintAliasMap = eslintConfig.settings['import/resolver'].alias.map;
-eslintAliasMap.forEach(item => {
-	jsStrFrom.push(item[0]);
-	jsStrTo.push(item[1].replace('./src/', `/${ghPagesFolder}/`)); // bad code, inner knowledge, root is .io not project!
-});
+// --greetnode flag for node greeting option - no need to replace imports,
+// should be resolved (but still isn't) by node native "imports" package.json key
+const args = arg({ '--greetnode': Boolean });
+
+// For Node alias resolving without tsc paths transpiling we forced to use module-aliases package,
+// because native "imports" aren't working correctly yet: https://github.com/ilearnio/module-alias/issues/113
+if (!args['--greetnode']) {
+	// use eslint configuration for aliases
+	const eslintAliasMap = eslintConfig.settings['import/resolver'].alias.map;
+	eslintAliasMap.forEach(item => {
+		jsStrFrom.push(item[0]);
+		jsStrTo.push(
+			// bad code, inner knowledge, root is .io not project!
+			item[1].replace(
+				'./src/',
+				`/${ghPagesFolder}/`,
+			));
+	});
+}
 
 // replace imports in esm
 replace({
-	files: './dist/**/*.js',
+	files: args['--greetnode'] ? './distnode/**/*.js' : './dist/**/*.js',
 	from: jsStrFrom,
 	to: jsStrTo,
 });

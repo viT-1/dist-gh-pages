@@ -33,6 +33,15 @@
 			"parserOptions": {
 				"sourceType": "module"
 			}
+		},
+		{
+			"files": ["./distnode/**/*.js"],
+			"env": {
+				"node": true
+			},
+			"parserOptions": {
+				"sourceType": "module"
+			}
 		}
 	]
 }
