@@ -9,6 +9,6 @@
 		"semi": ["error", "always"],
 		"spaced-comment": ["error", "always"],
 		"import/no-default-export": "error",
-		"import/no-unresolved": ["error", { "ignore": ["\\/.*\\.js"] }]
+		"import/no-unresolved": ["error", { "ignore": ["\\/dist-gh-pages\\/.*\\.js"] }]
 	}
 }

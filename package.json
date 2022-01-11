@@ -1,42 +1,37 @@
 {
     "name": "dist-gh-pages",
-    "version": "0.3.4",
+    "version": "0.4.0",
 	"description": "Simple project for hosting static gh-pages (SPA further).",
 	"keywords": [
 		"gh-pages",
 		"free hosting",
 		"static site",
-		"alias"
+		"alias",
+		"tsconfig-paths"
 	],
 	"repository": {
         "type": "git",
         "url": "git://github.com/viT-1/dist-gh-pages.git"
     },
 	"scripts": {
-		"greet.node": "node -r esm -r module-alias/register ./distnode/main.js",
+		"greet.node": "node -r esm -r tsconfig-paths/register ./src/main",
 		"lint": "eslint **/*.js",
 		"copyfiles": "rm -rf dist && mkdir dist && cp -r ./src/** ./dist",
-		"copyfiles.node": "rm -rf distnode && mkdir distnode && cp -r ./src/** ./distnode",
 		"replacestr": "node -r esm ./replace-in-file.js",
-		"replacestr.node": "node -r esm ./replace-in-file.js --greetnode",
 		"build": "npm run copyfiles && npm run replacestr",
-		"build.node": "npm run copyfiles.node && npm run replacestr.node",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d dist"
 	},
 	"dependencies": {
-		"arg": "5.0.1",
 		"esm": "3.2.25",
 		"gh-pages": "3.2.3",
-		"module-alias": "2.2.2",
+		"tsconfig-paths": "3.12.0",
 		"replace-in-file": "6.3.2"
 	},
 	"devDependencies": {
 		"eslint": "8.5.0",
 		"eslint-plugin-import": "2.25.3",
-		"eslint-import-resolver-alias": "1.1.2"
-	},
-	"_moduleAliases": {
-		"#common": "./distnode/common"
+		"eslint-import-resolver-node": "0.3.6",
+		"eslint-import-resolver-typescript": "2.5.0"
 	}
 }

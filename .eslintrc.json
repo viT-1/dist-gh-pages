@@ -8,10 +8,9 @@
 	"plugins": ["import"],
 	"settings": {
 		"import/resolver": {
-			"alias": {
-				"map": [
-					["#common", "./src/common"]
-				]
+			"node": {},
+			"typescript": {
+				"project": "."
 			}
 		}
 	},

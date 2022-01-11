@@ -1,12 +1,11 @@
-import arg from 'arg';
 import replace from 'replace-in-file';
-import eslintConfig from './.eslintrc.json';
+import aliasConfig from './tsconfig.json';
 import pjson from './package.json';
 
-const { devDependencies, name: ghPagesFolder } = pjson;
+const { dependencies, name: ghPagesFolder } = pjson;
 
 const ghPagesModule = { name: 'gh-pages' };
-ghPagesModule.ver = devDependencies[ghPagesModule.name];
+ghPagesModule.ver = dependencies[ghPagesModule.name];
 
 // replace info in html
 replace({
@@ -25,29 +24,22 @@ let jsStrFrom = new Array(
 
 let jsStrTo = ['', '$1$2$4.js$2', '$1$2$3$4$5/index.js$2'];
 
-// --greetnode flag for node greeting option - no need to replace imports,
-// should be resolved (but still isn't) by node native "imports" package.json key
-const args = arg({ '--greetnode': Boolean });
-
-// For Node alias resolving without tsc paths transpiling we forced to use module-aliases package,
-// because native "imports" aren't working correctly yet: https://github.com/ilearnio/module-alias/issues/113
-if (!args['--greetnode']) {
-	// use eslint configuration for aliases
-	const eslintAliasMap = eslintConfig.settings['import/resolver'].alias.map;
-	eslintAliasMap.forEach(item => {
-		jsStrFrom.push(item[0]);
-		jsStrTo.push(
-			// bad code, inner knowledge, root is .io not project!
-			item[1].replace(
-				'./src/',
-				`/${ghPagesFolder}/`,
-			));
-	});
-}
+// TODO: instead regex replacing alias map (bad replace '/*'), use tsconfig-paths createMatchPath
+// use eslint configuration for aliases
+const aliasMap = aliasConfig.compilerOptions.paths;
+Object.keys(aliasMap).forEach(key => {
+	jsStrFrom.push(key.replace('/*', ''));
+	jsStrTo.push(
+		// bad code, inner knowledge, wwwroot is viT-1.io not this project root!
+		aliasMap[key][0].replace('/*', '').replace(
+			'./src/',
+			`/${ghPagesFolder}/`,
+		));
+});
 
 // replace imports in esm
 replace({
-	files: args['--greetnode'] ? './distnode/**/*.js' : './dist/**/*.js',
+	files: './dist/**/*.js',
 	from: jsStrFrom,
 	to: jsStrTo,
 });

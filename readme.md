@@ -3,3 +3,6 @@ Use `npm run deploy` for deploying dist folder to remote (no need to commit) rep
 then you can see [demo site](https://vit-1.github.io/dist-gh-pages/).
 
 ESM aliases resolved by hands with [replace-in-file](https://github.com/adamreisnz/replace-in-file) node [script](https://github.com/viT-1/dist-gh-pages/blob/dce502b314fb81b4bf086af6b64fe983ff6cdde9/package.json#L21).
+
+This project is not using TypeScript but using tsconfig.json > paths
+to have single paths configuration for all (eslint, node, jest)!
