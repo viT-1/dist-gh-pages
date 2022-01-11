@@ -1,8 +1,12 @@
 {
 	"compilerOptions": {
 		"baseUrl": ".",
+		"outDir": "./dist",
 		"paths": {
 			"#common/*": ["./src/common/*"]
 		}
+	},
+	"tsc-alias": {
+		"resolveFullPaths": true
 	}
 }
