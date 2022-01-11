@@ -1,6 +1,6 @@
 {
     "name": "dist-gh-pages",
-    "version": "0.5.0",
+    "version": "0.5.1",
 	"description": "Simple project for hosting static gh-pages (SPA further).",
 	"keywords": [
 		"gh-pages",
@@ -18,8 +18,7 @@
 		"lint": "eslint **/*.js",
 		"copyfiles": "rm -rf dist && mkdir dist && cp -r ./src/** ./dist",
 		"replacestr": "node -r esm ./replace-in-file.js",
-		"alias-to-relative": "tsc-alias -p tsconfig.json",
-		"build": "npm run copyfiles && npm run replacestr && npm run alias-to-relative",
+		"build": "npm run copyfiles && npm run replacestr && tsc-alias",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d dist"
 	},
