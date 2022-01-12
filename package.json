@@ -1,13 +1,16 @@
 {
     "name": "dist-gh-pages",
-    "version": "0.5.1",
+    "version": "0.6.0",
 	"description": "Simple project for hosting static gh-pages (SPA further).",
 	"keywords": [
 		"gh-pages",
 		"free hosting",
 		"static site",
 		"alias",
-		"tsconfig paths"
+		"tsconfig paths",
+		"esm",
+		"ES modules",
+		"jest"
 	],
 	"repository": {
         "type": "git",
@@ -20,7 +23,9 @@
 		"replacestr": "node -r esm ./replace-in-file.js",
 		"build": "npm run copyfiles && npm run replacestr && tsc-alias",
 		"predeploy": "npm run build",
-		"deploy": "gh-pages -d dist"
+		"deploy": "gh-pages -d dist",
+		"test": "jest --runInBand --no-cache",
+		"clj": "jest --clearCache"
 	},
 	"dependencies": {
 		"esm": "3.2.25",
@@ -31,7 +36,23 @@
 	"devDependencies": {
 		"eslint": "8.5.0",
 		"eslint-plugin-import": "2.25.3",
+		"eslint-plugin-jest": "25.3.4",
+		"eslint-plugin-jest-formatting": "3.1.0",
 		"eslint-import-resolver-node": "0.3.6",
-		"eslint-import-resolver-typescript": "2.5.0"
+		"eslint-import-resolver-typescript": "2.5.0",
+		"jest": "27.4.7",
+		"jest-esm-transformer": "1.0.0",
+		"jest-resolver-tsconfig-paths": "0.14.0"
+	},
+	"jest": {
+		"collectCoverage": true,
+		"collectCoverageFrom": [
+			"src/**/*.js",
+			"!src/*.js",
+			"!**/*-conf.js",
+			"!**/index.js"
+		],
+		"transform": { "\\.m?jsx?$": "jest-esm-transformer" },
+		"resolver": "jest-resolver-tsconfig-paths"
 	}
 }

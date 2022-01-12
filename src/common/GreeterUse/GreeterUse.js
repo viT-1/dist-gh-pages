@@ -1,11 +1,10 @@
 import { Greeter } from '#common/Greeter';
-
 function GreeterUse() {
 }
 
 // static class method (alternative)
-GreeterUse.say = function() {
-	const gr = new Greeter('Dude');
+GreeterUse.say = function(greetTarget) {
+	const gr = new Greeter(greetTarget);
 	return gr.greet();
 };
 

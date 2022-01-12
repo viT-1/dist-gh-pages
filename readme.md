@@ -8,3 +8,9 @@ Node [script](https://github.com/viT-1/dist-gh-pages/blob/8ccbffd4531564dd5332e2
 
 This project is not using TypeScript but using tsconfig.json > paths
 to have single paths configuration for all (eslint, node, jest)!
+
+Jest [try to support](https://github.com/facebook/jest/issues/9430) native esm (with imports),
+but isn't ready yet (2022.01.12), also isn't ready [mocking with esm](https://github.com/facebook/jest/issues/10025).
+That's why we forced to use [jest-esm-transformer](https://github.com/ActuallyACat/jest-esm-transformer) (Babel transform test modules & `*.spec` scripts to CommonJs).
+[jest-resolver-tsconfig-paths](https://www.npmjs.com/package/jest-resolver-tsconfig-paths) is used for resolving test imports with non-relative alias paths.
+Jest configuration is stored in package.json because it hasn't any js logic.

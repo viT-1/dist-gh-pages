@@ -5,7 +5,7 @@
 		"plugin:import/recommended",
 		"./eslint.rules.json"
     ],
-	"plugins": ["import"],
+	"plugins": ["import", "jest"],
 	"settings": {
 		"import/resolver": {
 			"node": {},
@@ -16,6 +16,9 @@
 	},
 	"env": {
 		"es6": true
+	},
+	"parserOptions": {
+		"sourceType": "module"
 	},
     "overrides": [
 		{
@@ -28,19 +31,14 @@
 			"files": ["./src/**/*.js", "./dist/**/*.js"],
 			"env": {
 				"browser": true
-			},
-			"parserOptions": {
-				"sourceType": "module"
 			}
 		},
 		{
-			"files": ["./distnode/**/*.js"],
+			"files": ["**/*.spec.js"],
 			"env": {
-				"node": true
+				"jest": true
 			},
-			"parserOptions": {
-				"sourceType": "module"
-			}
+			"extends": ["plugin:jest/all", "plugin:jest-formatting/strict"]
 		}
 	]
 }
