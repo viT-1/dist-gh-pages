@@ -1,6 +1,6 @@
 {
     "name": "dist-gh-pages",
-    "version": "0.6.1",
+    "version": "0.6.2",
 	"description": "Simple project for hosting static gh-pages (SPA further).",
 	"keywords": [
 		"gh-pages",
@@ -17,7 +17,7 @@
         "url": "git://github.com/viT-1/dist-gh-pages.git"
     },
 	"scripts": {
-		"greet.node": "node -r esm ./dist/main",
+		"greet.node": "esm ./dist/main:run",
 		"lint": "eslint **/*.js",
 		"copyfiles": "rm -rf dist && mkdir dist && cp -r ./src/** ./dist",
 		"replacestr": "node -r esm ./replace-in-file.js",
@@ -29,6 +29,7 @@
 	},
 	"dependencies": {
 		"esm": "3.2.25",
+		"esm-cli": "1.1.1",
 		"gh-pages": "3.2.3",
 		"replace-in-file": "6.3.2",
 		"tsc-alias": "1.5.0"
@@ -50,11 +51,12 @@
 		"collectCoverage": true,
 		"collectCoverageFrom": [
 			"src/**/*.js",
-			"!src/*.js",
 			"!**/*-conf.js",
 			"!**/index.js"
 		],
+		"testMatch": ["<rootDir>/src/**/*.spec.js"],
 		"transform": { "\\.m?jsx?$": "jest-esm-transformer" },
-		"resolver": "jest-resolver-tsconfig-paths"
+		"resolver": "jest-resolver-tsconfig-paths",
+		"silent": true
 	}
 }

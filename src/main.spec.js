@@ -1,10 +1,28 @@
-import { describe, expect, it } from '@jest/globals';
+import {
+	describe,
+	expect,
+	it,
+	jest,
+} from '@jest/globals';
+import { run } from '~/main';
 
-describe('module Greeter.js', () => {
-	// TODO: main.js is esm module. How to check it without export?
-	it('main.js runs without errors', () => {
+describe('module main', () => {
+	it('runs without errors', () => {
 		expect.assertions(1);
 
-		expect(Array.isArray).not.toThrow();
+		expect(run).not.toThrow();
+	});
+
+	it('should greet by console', () => {
+		expect.assertions(1);
+
+		const consoleSpy = jest.spyOn(global.console, 'log').mockImplementation(jest.fn());
+
+		run();
+
+		// eslint-disable-next-line jest/prefer-called-with
+		expect(consoleSpy).toHaveBeenCalled();
+
+		consoleSpy.mockRestore();
 	});
 });

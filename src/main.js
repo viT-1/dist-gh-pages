@@ -1,4 +1,9 @@
 import { GreeterUse } from '#common/GreeterUse';
 
-// eslint-disable-next-line no-console
-console.log(GreeterUse.say('Dude'));
+function run() {
+	// eslint-disable-next-line no-console
+	console.log(GreeterUse.say('Dude'));
+	// throw Error('Yep!');
+}
+
+export { run };
