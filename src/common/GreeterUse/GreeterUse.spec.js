@@ -1,3 +1,5 @@
+import { describe, expect, it } from '@jest/globals';
+
 import { GreeterUse } from '#common/GreeterUse';
 import { conf as GreeterConf } from '#common/Greeter';
 
@@ -22,4 +24,3 @@ describe('module GreeterUse.js', () => {
 		expect(GreeterUse.say()).toContain(GreeterConf.greetText);
 	});
 });
-// TODO: Why coverage is only 50% of Funcs?

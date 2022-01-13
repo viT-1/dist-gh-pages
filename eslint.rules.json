@@ -9,6 +9,9 @@
 		"semi": ["error", "always"],
 		"spaced-comment": ["error", "always"],
 		"import/no-default-export": "error",
-		"import/no-unresolved": ["error", { "ignore": ["\\/dist-gh-pages\\/.*\\.js"] }]
+		"import/prefer-default-export": "off",
+		"import/no-unresolved": ["error", { "ignore": ["\\/dist-gh-pages\\/.*\\.js"] }],
+		"linebreak-style": "off",
+		"no-tabs": "off"
 	}
 }

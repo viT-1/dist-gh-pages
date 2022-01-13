@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { Greeter, conf } from '#common/Greeter';
 
 describe('module Greeter.js', () => {

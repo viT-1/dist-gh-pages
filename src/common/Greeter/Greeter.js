@@ -4,7 +4,7 @@ function Greeter(target) {
 	this.greetTarget = target || defaultTarget;
 }
 
-Greeter.prototype.greet = function () {
+Greeter.prototype.greet = function greet() {
 	return `${greetText}, ${this.greetTarget}`;
 };
 

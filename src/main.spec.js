@@ -1,3 +1,5 @@
+import { describe, expect, it } from '@jest/globals';
+
 describe('module Greeter.js', () => {
 	// TODO: main.js is esm module. How to check it without export?
 	it('main.js runs without errors', () => {
