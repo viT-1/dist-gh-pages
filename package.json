@@ -1,6 +1,6 @@
 {
     "name": "dist-gh-pages",
-    "version": "0.6.2",
+    "version": "0.6.3",
 	"description": "Simple project for hosting static gh-pages (SPA further).",
 	"keywords": [
 		"gh-pages",
@@ -19,7 +19,7 @@
 	"scripts": {
 		"greet.node": "esm ./dist/main:run",
 		"lint": "eslint **/*.js",
-		"copyfiles": "rm -rf dist && mkdir dist && cp -r ./src/** ./dist",
+		"copyf": "rm -rf dist && cpx ./src/**/!(*.spec).* ./dist",
 		"replacestr": "node -r esm ./replace-in-file.js",
 		"build": "npm run copyfiles && npm run replacestr && tsc-alias",
 		"predeploy": "npm run build",
@@ -28,6 +28,7 @@
 		"clj": "jest --clearCache"
 	},
 	"dependencies": {
+		"cpx2": "4.1.2",
 		"esm": "3.2.25",
 		"esm-cli": "1.1.1",
 		"gh-pages": "3.2.3",
