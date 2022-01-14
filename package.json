@@ -19,7 +19,7 @@
 	"scripts": {
 		"greet.node": "esm ./dist/main:run",
 		"lint": "eslint **/*.js",
-		"copyf": "rm -rf dist && cpx ./src/**/!(*.spec).* ./dist",
+		"copyfiles": "rm -rf dist && cpx ./src/**/!(*.spec).* ./dist",
 		"replacestr": "node -r esm ./replace-in-file.js",
 		"build": "npm run copyfiles && npm run replacestr && tsc-alias",
 		"predeploy": "npm run build",
